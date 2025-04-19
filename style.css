@@ -56,4 +56,163 @@
     border: 1px solid #ccc;
     background: #fff;
     border-radius: 8px;
+  }
+  :root {
+    --primary: #00c853;
+    --dark: #111;
+    --light: #f8f9fa;
+  }
+
+  body, html {
+    scroll-behavior: smooth;
+    font-family: 'Segoe UI', sans-serif;
+    background-color: var(--light);
+  }
+
+  .navbar {
+    background-color: var(--dark);
+    padding: 1rem 0;
+  }
+
+  .navbar-brand {
+    font-weight: bold;
+    color: var(--primary);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.5rem;
+  }
+
+  .navbar-brand img {
+    height: 50px;
+  }
+
+  .navbar-nav .nav-link {
+    color: white;
+    font-size: 1.1rem;
+  }
+
+  .parallax-section {
+    height: 100vh;
+    background-image: url('fotos/liquid-marbling-paint-texture-background-fluid-painting-abstract-texture-intensive-color-mix-wallpaper.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+
+  .text-overlay {
+    background: rgba(0, 0, 0, 0.6);
+    padding: 60px;
+    color: white;
+    text-align: center;
+    border-radius: 16px;
+    max-width: 800px;
+  }
+
+  .section-image {
+    height: 60vh;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+  }
+
+  .section-overlay {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0,0,0,0.6);
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    font-size: 1.5rem;
+    text-align: center;
+  }
+
+  .row.image-text-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 40px 0;
+    min-height: 500px;
+  }
+
+  .image-text-section .text {
+    flex: 1;
+    padding: 30px;
+    font-size: 1.2rem;
+  }
+
+  .image-text-section .image {
+    flex: 1;
+    height: 100%;
+    min-height: 500px;
+    background-size: cover;
+    background-position: center;
+  }
+
+  footer {
+    background: var(--dark);
+    color: white;
+    padding: 20px;
+    text-align: center;
+  }
+
+  /* Parallax Text/Images Styling */
+  .parallax-container {
+    position: relative;
+  }
+
+  .parallax-container .section-image,
+  .parallax-container .image-text-section {
+    background-size: cover;
+    background-position: center;
+    height: 500px;
+    position: relative;
+  }
+
+  @media (max-width: 768px) {
+    .row.image-text-section {
+      flex-direction: column;
+    }
+    .image-text-section .image {
+      width: 100%;
+      min-height: 300px;
+    }
   }  
+  /* Grüne Hervorhebung für Navigation */
+.navbar-nav .nav-link.active {
+    color: var(--primary) !important;
+    font-weight: bold;
+  }
+  
+  .navbar-nav .nav-link:hover {
+    color: var(--primary) !important;
+  }
+  
+  .navbar-nav .nav-link {
+    transition: color 0.3s ease;
+  }
+  .navbar-nav .nav-link {
+    color: white;
+    font-size: 1.1rem;
+  }
+  
+  /* Fügen Sie hier die neuen Regeln ein */
+  .navbar-nav .nav-link.active {
+    color: var(--primary) !important;
+    font-weight: bold;
+  }
+  
+  .navbar-nav .nav-link:hover {
+    color: var(--primary) !important;
+  }
+  
+  .navbar-nav .nav-link {
+    transition: color 0.3s ease;
+  }
+  
