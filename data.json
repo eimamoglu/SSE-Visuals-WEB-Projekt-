@@ -1,0 +1,26 @@
+{
+    "shop": [
+      {
+        "name": "Produkt A",
+        "description": "Hochwertiges Produkt für den Alltag.",
+        "price": "19.99"
+      },
+      {
+        "name": "Produkt B",
+        "description": "Innovatives Werkzeug für Profis.",
+        "price": "29.99"
+      }
+    ],
+    "partner": [
+      {
+        "name": "Partner Produkt X",
+        "description": "Premium Qualität von Partner A.",
+        "price": "39.99"
+      },
+      {
+        "name": "Partner Produkt Y",
+        "description": "Top Auswahl von Partner B.",
+        "price": "49.99"
+      }
+    ]
+  }  
