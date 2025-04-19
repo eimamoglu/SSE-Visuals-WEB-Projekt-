@@ -2,33 +2,102 @@
 <html lang="de">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Mein Webprojekt</title>
-  <link rel="stylesheet" href="style.css"/>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .parallax-section {
+      background-image: url('https://images.unsplash.com/photo-1519125323398-675f0ddb6308');
+      height: 500px;
+      background-attachment: fixed;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+
+    .text-overlay {
+      background: rgba(0, 0, 0, 0.5);
+      color: white;
+      padding: 50px;
+      text-align: center;
+    }
+
+    footer {
+      background: #222;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+  </style>
 </head>
 <body>
-  <header>
-    <h1>Willkommen bei unserem Webprojekt</h1>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="unterseiten/shop.html">Webshop</a>
-      <a href="unterseiten/partner.html">Partner-Produkte</a>
-      <a href="unterseiten/kontakt.html">Kontakt</a>
-      <a href="unterseiten/impressum.html">Impressum</a>
-    </nav>
-  </header>
 
-  <section class="parallax"></section>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+      <a class="navbar-brand" href="#">Mein Webprojekt</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="mainNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="unterseiten/shop.html">Webshop</a></li>
+          <li class="nav-item"><a class="nav-link" href="unterseiten/partner.html">Partner</a></li>
+          <li class="nav-item"><a class="nav-link" href="unterseiten/kontakt.html">Kontakt</a></li>
+          <li class="nav-item"><a class="nav-link" href="unterseiten/impressum.html">Impressum</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
 
-  <main>
-    <h2>Unsere Produkte & Services</h2>
-    <p>Wir bieten hochwertige Produkte und innovative Lösungen – direkt von uns und ausgewählten Partnern.</p>
+  <!-- Parallax Section -->
+  <section class="parallax-section d-flex align-items-center justify-content-center">
+    <div class="text-overlay">
+      <h1 class="display-4">Innovation trifft Design</h1>
+      <p class="lead">Erlebe den Unterschied mit hochwertigen Produkten und Partnerlösungen</p>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <main class="container my-5">
+    <h2 class="text-center mb-4">Unsere Produkte & Services</h2>
+    <p class="text-center">Wir bieten hochwertige Produkte und innovative Lösungen – direkt von uns und ausgewählten Partnern.</p>
+    <div class="row text-center mt-5">
+      <div class="col-md-4 mb-4">
+        <div class="card h-100 shadow-sm">
+          <div class="card-body">
+            <h5 class="card-title">Direkt vom Hersteller</h5>
+            <p class="card-text">Unsere eigene Auswahl an geprüften Produkten für deinen Alltag.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-4">
+        <div class="card h-100 shadow-sm">
+          <div class="card-body">
+            <h5 class="card-title">Partnerlösungen</h5>
+            <p class="card-text">Kooperationen mit renommierten Herstellern – Qualität garantiert.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-4">
+        <div class="card h-100 shadow-sm">
+          <div class="card-body">
+            <h5 class="card-title">Support & Service</h5>
+            <p class="card-text">Wir sind jederzeit für Fragen und Anliegen erreichbar.</p>
+          </div>
+        </div>
+      </div>
+    </div>
   </main>
 
+  <!-- Footer -->
   <footer>
     <p>&copy; 2025 Mein Webprojekt</p>
   </footer>
 
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
