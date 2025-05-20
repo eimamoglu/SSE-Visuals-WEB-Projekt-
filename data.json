@@ -1,26 +1,28 @@
 {
     "shop": [
       {
-        "name": "Produkt A",
-        "description": "Hochwertiges Produkt für den Alltag.",
-        "price": "19.99"
+        "name": "SSE-Visuals X EDESGN Merch",
+        "description": "Stil und Komfort im Alltag.",
+        "price": "19.99 €",
+        "image": "../fotos/tshirt.jpeg"
       },
       {
-        "name": "Produkt B",
-        "description": "Innovatives Werkzeug für Profis.",
-        "price": "29.99"
-      }
-    ],
-    "partner": [
-      {
-        "name": "Partner Produkt X",
-        "description": "Premium Qualität von Partner A.",
-        "price": "39.99"
+        "name": "Werbung",
+        "description": "Werbeplakate für Unternehmen.",
+        "price": "Preis auf Anfrage",
+        "image": "../fotos/taxi.jpeg"
       },
       {
-        "name": "Partner Produkt Y",
-        "description": "Top Auswahl von Partner B.",
-        "price": "49.99"
+        "name": "Poster",
+        "description": "Qualitative Poster für Sie und Ihr Unternehmen.",
+        "price": "Preis auf Anfrage",
+        "image": "../fotos/rico.jpeg"
+      },
+      {
+        "name": "Social Media Beitrag",
+        "description": "Social Media Beiträge für Sie und Ihr Unternehmen.",
+        "price": "Preis auf Anfrage",
+        "image": "../fotos/bayram.jpeg"
       }
     ]
   }  
