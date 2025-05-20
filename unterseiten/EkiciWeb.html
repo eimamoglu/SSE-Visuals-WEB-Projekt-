@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BarkBuddy | SSE-Visuals</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    :root {
+      --primary-color: #b61717;
+      --secondary-color: #f8f9fa;
+    }
+    
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #ffffff;
+    }
+    
+    .navbar {
+      background-color: white;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    
+    .navbar-brand img {
+      height: 40px;
+    }
+    
+    .hero-section {
+      background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('../fotos/BarkbuddyLogo.jpeg');
+      background-size: cover;
+      background-position: center;
+      color: white;
+      padding: 100px 0;
+      text-align: center;
+    }
+    
+    .product-card {
+      background: white;
+      border-radius: 8px;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      margin-bottom: 30px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    }
+    
+    .product-card:hover {
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      transform: translateY(-5px);
+    }
+    
+    .product-image-container {
+      position: relative;
+      overflow: hidden;
+      height: 300px;
+    }
+    
+    .product-image-slider {
+      display: flex;
+      transition: transform 0.5s ease;
+      height: 100%;
+    }
+    
+    .product-image {
+      min-width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    .product-thumbnails {
+      display: flex;
+      padding: 10px;
+      background: var(--secondary-color);
+      overflow-x: auto;
+      scrollbar-width: none; /* Firefox */
+      -ms-overflow-style: none; /* IE and Edge */
+    }
+    
+    .product-thumbnails::-webkit-scrollbar {
+      display: none; /* Chrome, Safari, Opera */
+    }
+    
+    .thumbnail {
+      min-width: 60px;
+      height: 60px;
+      margin-right: 10px;
+      cursor: pointer;
+      border: 2px solid transparent;
+      transition: all 0.3s ease;
+      object-fit: cover;
+      flex-shrink: 0;
+    }
+    
+    .thumbnail:hover, .thumbnail.active {
+      border-color: var(--primary-color);
+    }
+    
+    .product-info {
+      padding: 20px;
+    }
+    
+    .product-title {
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+      color: #333;
+    }
+    
+    .product-price {
+      font-weight: bold;
+      color: var(--primary-color);
+      font-size: 1.3rem;
+    }
+    
+    .btn-primary {
+      background-color: var(--primary-color);
+      border-color: var(--primary-color);
+    }
+    
+    .btn-primary:hover {
+      background-color: #1794b6;
+      border-color: #1794b6;
+    }
+    
+    footer {
+      background-color: #333;
+      color: white;
+      padding: 40px 0;
+    }
+    
+    .social-icons a {
+      color: white;
+      margin-right: 15px;
+      font-size: 1.2rem;
+    }
+    
+    /* Slider Navigation Arrows */
+    .slider-nav {
+      position: absolute;
+      top: 50%;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      transform: translateY(-50%);
+      padding: 0 10px;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    
+    .product-image-container:hover .slider-nav {
+      opacity: 1;
+    }
+    
+    .slider-arrow {
+      background: rgba(255,255,255,0.7);
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    
+    .slider-arrow:hover {
+      background: rgba(255,255,255,0.9);
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg sticky-top">
+    <div class="container">
+      <a class="navbar-brand" href="#">
+        <img src="../fotos/BarkbuddyLogo.jpeg" alt="BarkBuddy Logo">
+        BarkBuddy
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="mainNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Produkte</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Über uns</a></li>
+          <li class="nav-item"><a class="nav-link" href="">Kontakt</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="container">
+      <h1 class="display-4">BarkBuddy</h1>
+      <p class="lead">Bark. Learn. Have Fun.</p>
+      <a href="#" class="btn btn-primary btn-lg mt-3">Jetzt entdecken</a>
+    </div>
+  </section>
+
+  <!-- Products Section -->
+  <section class="container my-5">
+    <h2 class="text-center mb-5">Unser Produkt</h2>
+    
+    <div class="row justify-content-center">  
+      <!-- Product 3 -->
+      <div class="col-md-4">
+        <div class="product-card">
+          <div class="product-image-container">
+            <div class="product-image-slider">
+              <img src="https://images.unsplash.com/photo-1551232864-3f0890e580d9?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" 
+                   alt="Hundefutter" class="product-image">
+              <img src="https://images.unsplash.com/photo-1568640347023-a616a30bc3bd?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" 
+                   alt="Hundefutter Variante 1" class="product-image">
+              <img src="https://images.unsplash.com/photo-1589927986089-35812388d1f4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" 
+                   alt="Hundefutter Variante 2" class="product-image">
+            </div>
+            <div class="slider-nav">
+              <div class="slider-arrow prev"><i class="fas fa-chevron-left"></i></div>
+              <div class="slider-arrow next"><i class="fas fa-chevron-right"></i></div>
+            </div>
+          </div>
+          <div class="product-thumbnails">
+            <img src="https://images.unsplash.com/photo-1551232864-3f0890e580d9?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" 
+                 alt="Thumbnail 1" class="thumbnail active" data-index="0">
+            <img src="https://images.unsplash.com/photo-1568640347023-a616a30bc3bd?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" 
+                 alt="Thumbnail 2" class="thumbnail" data-index="1">
+            <img src="https://images.unsplash.com/photo-1589927986089-35812388d1f4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" 
+                 alt="Thumbnail 3" class="thumbnail" data-index="2">
+          </div>
+          <div class="product-info">
+            <h3 class="product-title">Bio-Hundefutter</h3>
+            <p class="text-muted">Natürliche Ernährung für Ihren Hund</p>
+            <div class="d-flex justify-content-between align-items-center mt-3">
+              <span class="product-price">€39.99</span>
+              <button class="btn btn-primary">In den Warenkorb</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container text-center">
+      <div class="row justify-content-center">
+        <div class="col-md-4 mb-3">
+          <h5>Powered by SSE-Visuals</h5>
+          <p>Vision. Style. Impact.</p>
+        </div>
+        <div class="col-md-4 mb-3">
+          <h5>Folgen Sie SSE-Visuals</h5>
+          <div class="social-icons d-flex justify-content-center">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-pinterest"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+  
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Initialisiere Slider für jedes Produkt
+      document.querySelectorAll('.product-card').forEach(card => {
+        const slider = card.querySelector('.product-image-slider');
+        const images = card.querySelectorAll('.product-image');
+        const thumbnails = card.querySelectorAll('.thumbnail');
+        const prevBtn = card.querySelector('.prev');
+        const nextBtn = card.querySelector('.next');
+        
+        let currentIndex = 0;
+        const totalImages = images.length;
+        
+        // Funktion zum Aktualisieren des Sliders
+        function updateSlider() {
+          slider.style.transform = `translateX(-${currentIndex * 100}%)`;
+          
+          // Aktualisiere aktive Thumbnails
+          thumbnails.forEach((thumb, index) => {
+            thumb.classList.toggle('active', index === currentIndex);
+          });
+        }
+        
+        // Thumbnail Klick Event
+        thumbnails.forEach(thumb => {
+          thumb.addEventListener('click', function() {
+            currentIndex = parseInt(this.getAttribute('data-index'));
+            updateSlider();
+          });
+        });
+        
+        // Prev/Next Button Events
+        if (prevBtn && nextBtn) {
+          prevBtn.addEventListener('click', () => {
+            currentIndex = (currentIndex - 1 + totalImages) % totalImages;
+            updateSlider();
+          });
+          
+          nextBtn.addEventListener('click', () => {
+            currentIndex = (currentIndex + 1) % totalImages;
+            updateSlider();
+          });
+        }
+        
+        // Touch Events für mobile Swipe-Gesten
+        let touchStartX = 0;
+        let touchEndX = 0;
+        
+        slider.addEventListener('touchstart', (e) => {
+          touchStartX = e.changedTouches[0].screenX;
+        }, false);
+        
+        slider.addEventListener('touchend', (e) => {
+          touchEndX = e.changedTouches[0].screenX;
+          handleSwipe();
+        }, false);
+        
+        function handleSwipe() {
+          if (touchEndX < touchStartX - 50) {
+            // Swipe nach links
+            currentIndex = (currentIndex + 1) % totalImages;
+            updateSlider();
+          }
+          
+          if (touchEndX > touchStartX + 50) {
+            // Swipe nach rechts
+            currentIndex = (currentIndex - 1 + totalImages) % totalImages;
+            updateSlider();
+          }
+        }
+      });
+      
+      // Aktive Navigation hervorheben
+      const currentPage = location.pathname.split('/').pop();
+      document.querySelectorAll('.nav-link').forEach(link => {
+        if (link.getAttribute('href') === currentPage) {
+          link.classList.add('active');
+        }
+      });
+    });
+  </script>
+</body>
+</html>

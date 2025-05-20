@@ -58,7 +58,7 @@
   <!-- Kontakt Content -->
   <main class="container my-5">
     <h1 class="text-center mb-4">Kontaktieren Sie uns</h1>
-    <p class="text-center mb-5">Wir freuen uns auf Ihre Nachricht - 24 Stunden am Tag</p>
+    <p class="text-center mb-5">Wir freuen uns auf Ihre Nachricht - Jederzeit</p>
     
     <div class="row g-4">
       <div class="col-md-7">
@@ -91,7 +91,7 @@
             <div class="form-check mb-4">
               <input class="form-check-input" type="checkbox" id="privacy" required>
               <label class="form-check-label" for="privacy">
-                Ich stimme der <a href="#">Datenschutzerklärung</a> zu
+                Ich stimme der <a href="#" data-bs-toggle="modal" data-bs-target="#privacyModal">Datenschutzerklärung</a> zu
               </label>
             </div>
             <button type="submit" class="btn btn-primary w-100 py-2">Nachricht senden</button>
@@ -116,9 +116,7 @@
           </p>
           
           <h3 class="mt-4">Öffnungszeiten</h3>
-          <p>
-            <strong>24 Stunden am Tag</strong><br>
-          </p>
+          <p><strong>Jederzeit</strong></p>
         </div>
       </div>
     </div>
@@ -128,13 +126,64 @@
     </div>
   </main>
 
+  <!-- Datenschutz Modal -->
+  <div class="modal fade" id="privacyModal" tabindex="-1" aria-labelledby="privacyModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="privacyModalLabel">Datenschutzerklärung</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Schließen"></button>
+        </div>
+        <div class="modal-body" style="white-space: pre-wrap;">
+<strong>1. Allgemeine Hinweise</strong>
+Der Schutz Ihrer persönlichen Daten ist uns ein besonderes Anliegen. Wir verarbeiten Ihre Daten ausschließlich auf Grundlage der gesetzlichen Bestimmungen (DSGVO, TKG 2003).
+
+<strong>2. Verantwortlicher</strong>
+SSE-Visuals AG  
+Wexstraße 19-23  
+1200 Wien, Österreich  
+E-Mail: eimamoglu@student.tgm.ac.at  
+Geschäftsführer: Elyesa Imamoglu
+
+<strong>3. Erhebung und Speicherung personenbezogener Daten sowie Art und Zweck von deren Verwendung</strong>
+a) Beim Besuch der Website:  
+Automatisch erhoben: IP-Adresse, Datum/Uhrzeit, Browser, Betriebssystem etc.
+
+b) Bei Kontaktaufnahme:  
+Name, E-Mail-Adresse, Betreff und Nachricht werden zur Bearbeitung gespeichert.
+
+<strong>4. Weitergabe von Daten</strong>
+Keine Weitergabe ohne Ihre Einwilligung oder gesetzliche Grundlage.
+
+<strong>5. Cookies</strong>
+Diese Website verwendet Cookies zur Verbesserung der Benutzererfahrung.
+
+<strong>6. Webshop</strong>
+Bei Bestellungen werden die dafür notwendigen Daten gespeichert und verarbeitet.
+
+<strong>7. Ihre Rechte</strong>
+Auskunft, Berichtigung, Löschung, Einschränkung, Datenübertragbarkeit, Widerspruch.
+
+<strong>8. Datensicherheit</strong>
+Technische und organisatorische Maßnahmen schützen Ihre Daten.
+
+<strong>9. Änderungen</strong>
+Diese Erklärung kann bei rechtlichen Änderungen angepasst werden.
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Schließen</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- Footer -->
   <footer>
     <p>&copy; 2025 SSE-Visuals AG. All rights are reserved.</p>
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script>// Fügen Sie dies am Ende Ihrer HTML-Datei vor dem schließenden </body>-Tag hinzu
+  <script>
     document.addEventListener('DOMContentLoaded', function() {
       const currentPage = location.pathname.split('/').pop();
       document.querySelectorAll('.nav-link').forEach(link => {
@@ -142,6 +191,7 @@
           link.classList.add('active');
         }
       });
-    });</script>
+    });
+  </script>
 </body>
 </html>

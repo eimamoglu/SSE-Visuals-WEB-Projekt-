@@ -16,8 +16,40 @@
       box-shadow: 0 10px 20px rgba(0,0,0,0.1);
     }
     .product-img {
+      width: 100%;
       height: 200px;
-      object-fit: cover;
+      object-fit: contain;
+      background-color: #f8f9fa;
+      padding: 10px;
+      cursor: pointer;
+    }
+    .modal-content {
+      background-color: rgba(0, 0, 0, 0.85);
+      border: none;
+      position: relative;
+    }
+    .modal-body {
+      padding: 0;
+      text-align: center;
+    }
+    #modalImage {
+      max-height: 80vh;
+      width: auto;
+      max-width: 100%;
+    }
+    .modal-close-btn {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 2rem;
+      color: white;
+      background: none;
+      border: none;
+      z-index: 1051;
+    }
+    .modal-close-btn:hover {
+      color: #ccc;
+      cursor: pointer;
     }
   </style>
 </head>
@@ -54,8 +86,20 @@
     </div>
   </main>
 
+  <!-- Modal für Bildvorschau -->
+  <div class="modal fade" id="imageModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+        <button type="button" class="modal-close-btn" data-bs-dismiss="modal" aria-label="Close">&times;</button>
+        <div class="modal-body">
+          <img id="modalImage" src="" class="img-fluid rounded" alt="Produktbild">
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- Footer -->
-  <footer>
+  <footer class="text-center py-3">
     <p>&copy; 2025 SSE-Visuals. All rights reserved.</p>
   </footer>
 
@@ -65,16 +109,28 @@
     document.addEventListener('DOMContentLoaded', function() {
       const products = [
         {
-          "name": "SSE-Visuals Merch",
+          "name": "SSE-Visuals X EDESGN Merch",
           "description": "Stil und Komfort im Alltag.",
-          "price": "19.99",
-          "image": "https://images.unsplash.com/photo-1523275335684-37898b6baf30?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
+          "price": "19.99 €",
+          "image": "../fotos/tshirt.jpeg"
         },
         {
-          "name": "Startup Branding Pack | Service",
-          "description": "Branding package, einschulung für neue Unternehmer",
-          "price": "100€ pro Monat",
-          "image": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
+          "name": "Werbung",
+          "description": "Werbeplakate für Unternehmen.",
+          "price": "Preis auf Anfrage",
+          "image": "../fotos/taxi.jpeg"
+        },
+        {
+          "name": "Poster",
+          "description": "Qualitative Poster für Sie und Ihr Unternehmen.",
+          "price": "Preis auf Anfrage",
+          "image": "../fotos/rico.jpeg"
+        },
+        {
+          "name": "Social Media Beitrag",
+          "description": "Social Media Beiträge für Sie und Ihr Unternehmen.",
+          "price": "Preis auf Anfrage",
+          "image": "../fotos/bayram.jpeg"
         }
       ];
       
@@ -88,7 +144,7 @@
               <div class="card-body">
                 <h5 class="card-title">${product.name}</h5>
                 <p class="card-text">${product.description}</p>
-                <p class="h5 text-primary">${product.price} €</p>
+                <p class="h5 text-primary">${product.price}</p>
               </div>
               <div class="card-footer bg-white">
                 <button class="btn btn-primary w-100">In den Warenkorb</button>
@@ -98,18 +154,30 @@
         `;
         shopContainer.innerHTML += productHTML;
       });
+
+      // Bild-Klick-Funktion für Modal
+      setTimeout(() => {
+        document.querySelectorAll('.product-img').forEach(img => {
+          img.addEventListener('click', function () {
+            const modalImg = document.getElementById('modalImage');
+            modalImg.src = this.src;
+            const imageModal = new bootstrap.Modal(document.getElementById('imageModal'));
+            imageModal.show();
+          });
+        });
+      }, 100);
     });
   </script>
   <script>
-    // Fügen Sie dies am Ende Ihrer HTML-Datei vor dem schließenden </body>-Tag hinzu
-document.addEventListener('DOMContentLoaded', function() {
-  const currentPage = location.pathname.split('/').pop();
-  document.querySelectorAll('.nav-link').forEach(link => {
-    if (link.getAttribute('href') === currentPage) {
-      link.classList.add('active');
-    }
-  });
-});
+    // Aktiven Menüpunkt markieren
+    document.addEventListener('DOMContentLoaded', function() {
+      const currentPage = location.pathname.split('/').pop();
+      document.querySelectorAll('.nav-link').forEach(link => {
+        if (link.getAttribute('href') === currentPage) {
+          link.classList.add('active');
+        }
+      });
+    });
   </script>
 </body>
 </html>
